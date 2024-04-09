@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product</title>
+    <style>
+        body {
+            background-color: #000000;
+            color: #000;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: black;
+            color: white;
+            padding: 0px;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ffffff;
+            overflow: hidden;
+        }
+
+        nav a {
+            float: left;
+            display: block;
+            color: rgb(0, 0, 0);
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .user-container {
+      max-width: 600px;
+      margin: 50px auto;
+      background-color: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 30px;
+    }
+
+    .main-info, .additional-info {
+      padding: 20px;
+    }
+
+    .main-info {
+      background-color: #333;
+      color: #fff;
+    }
+
+    .additional-info {
+      background-color: #fff;
+      color: #000;
+    }
+
+    h2 {
+      margin-top: 0;
+    }
+
+    p {
+      margin: 10px 0;
+    }
+    .buttons {
+            background-color: #ffffff;
+            margin-left: 60px;
+            margin-right: 60px;
+            color: #000000;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .buttons button:hover {
+            background-color: #000000;
+            border: 2px solid #ffffff;
+            color: rgb(255, 255, 255);
+        }
+    .all-products h2{
+        color: #fff;
+    }
+    .buttons {
+        text-align: center;
+    }
+    .main-info input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            box-sizing: border-box;
+            border: 1px solid #000; /* Black border */
+            border-radius: 5px;
+        }
+    .main-info label {
+        width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            box-sizing: border-box;
+            border-radius: 5px;
+    }
+    .result {
+        color: {{color_wrong}}
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="../add_item">Add item</a>
+            <a href="../orders">Orders</a>
+            <a href="../delete">Delete item</a>
+            <a href="../checkcheck">CheckCheck</a>
+            <!-- <a href="../promocodes">Promocodes</a> -->
+            <a href="../generator">Generator</a>
+            <a href="../add_automated_receipt">Add automated receipt</a>
+        </nav>
+    </header>
+
+    <div>
+        <div class="all-products">
+            <h2></h2>
+        </div>
+        <div class="user-container">
+            <div class="main-info">
+                <form action="#" method="post" enctype="multipart/form-data">
+                    <h2>Add receipt</h2>
+                    <label for="input1">Upload html file</label>
+                    <input type="file" name="file" accept=".html ">
+                    <label for="date_format">Date formats(Write '-' if you want to skip)</label>
+                    <input type="text" name="date_format" placeholder="Date formats" required>
+                    <label for="random_formats">Random formats(For paper receipts must be position:landscape/portrait)</label>
+                    <input type="text" name="random_formats" placeholder="Random formats" required>
+                    <label for="subject">Subject</label>
+                    <input type="text" name="subject" placeholder="Subject" required>
+                    <label for="receipt_name">Receipt name</label>
+                    <input type="text" name="receipt_name" placeholder="Receipt name" required>
+                    <label for="email">Email</label>
+                    <input type="email" name="email" placeholder="email" required>
+                    <label for="password">Password</label>
+                    <input type="text" name="password" placeholder="Password" required>
+                    <input type="submit" class="buttons" value="Submit">
+                    <h4 class="result">{{wrong}}</h4>
+                </form>
+            </div>
+
+            <div class="user-container">
+                <div class="main-info">
+                        <h2>Automated receipts(short names)</h2>
+                        {% for i in receipts %}
+                        <h3>{{i}}</h3>
+                        {% endfor %}
+                </div>
+            </div>
+            <div class="main-info">
+                <form action="#" method="post">
+                    <h2>Delete automated receipt</h2>
+                    <input name="short_receipt_name" type="text" placeholder="Write short receipt name">
+                    <input type="submit" class="buttons" value="Submit">
+                    <h4 class="result">{{wrong_delete}}</h4>
+                </form>
+            </div>
+    </div>
+    
+</body>
+</html>

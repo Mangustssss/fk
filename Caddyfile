@@ -1,0 +1,8 @@
+www.fk-receipts.com {
+    redir https://fk-receipts.com{uri}
+}
+
+fk-receipts.com {
+    reverse_proxy localhost:8000
+}
+

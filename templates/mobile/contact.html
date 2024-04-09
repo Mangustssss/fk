@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: black;
+        }
+
+        div {
+            background-color: black;
+        }
+
+        header {
+            background-color: black;
+            padding: 10px;
+            text-align: center;
+            position: relative;
+        }
+
+        #menuButton {
+            cursor: pointer;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: white;
+            font-size: 20px;
+        }
+
+        .logo {
+            color: white;
+        }
+        
+
+
+        nav {
+            display: none;
+            background-color: rgb(0, 0, 0);
+            overflow: hidden;
+            position: absolute;
+            top: 60px;
+            right: 0;
+            width: 100%;
+            z-index: 1;
+            animation: fade-in 0.5s ease-in-out;
+        }
+
+        nav a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            border: 1px solid white;
+        }
+
+        @media only screen and (max-width: 600px) {
+            nav {
+                top: 60px;
+            }
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .write-us {
+            margin-top: 30%;
+            text-align: center;
+            color: white;
+            font-size: 35px;
+        }
+
+        
+
+        
+
+        .footer {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 90%;
+        }
+        
+        
+
+    .view-more:hover {
+      background-color: #ffffff; /* Change to the desired color on hover */
+      color: #000000;
+      border-color: #000000;
+    }
+
+    .upper-contact {
+        text-align: center;
+        display: flex;
+        justify-content: space-around;
+    }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1 class="logo">FK</h1>
+        <div id="menuButton">&#9776;</div>
+        <nav>
+            <a href="../">Home</a>
+            <a href="store">Store</a>
+            <a href="affiliate">Affiliate</a>
+            <a href="delivery">Delivery</a>
+            <a href="reviews">Reviews</a>
+            <a href="contact">Contact</a>
+        </nav>
+    </header>
+    <div>
+        <div class="write-us">
+            <h1>Write us!</h1>
+        </div>
+    </div>
+    <div class="upper-contact">
+        <div class="contact">
+            <a href="https://t.me/FKreceipt" class="view-more"><img width='60px' src="https://i.postimg.cc/MpcfLYbW/telegram.png"></a>
+        </div>
+        <div class="contact">
+            <a href="https://www.instagram.com/fkreceipts/" class="view-more"><img width='60px' src="https://i.postimg.cc/xdMJfT4h/insta.png"></a>
+        </div>
+    </div>
+    <div class="footer">
+        © FK Receipt, 2023. 
+    </div>
+    <script>
+        document.getElementById('menuButton').addEventListener('click', function () {
+            var nav = document.querySelector('nav');
+            nav.style.display = (nav.style.display === 'block') ? 'none' : 'block';
+        });
+    </script>
+
+</body>
+
+</html>

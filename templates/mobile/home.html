@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: black;
+        }
+
+        div {
+            background-color: black;
+        }
+
+        header {
+            background-color: black;
+            padding: 10px;
+            text-align: center;
+            position: relative;
+        }
+
+        #menuButton {
+            cursor: pointer;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: white;
+            font-size: 20px;
+        }
+
+        .logo {
+            color: white;
+        }
+
+        .quote {
+            color: white;
+            text-align: center;
+        }
+
+        .bestsellers {
+            color: white;
+            text-align: center;
+            font-size: 30px;
+        }
+
+        .quote h2 {
+            font-size: 30px;
+        }
+
+        .snake img {
+            width: 100%;
+        }
+
+        nav {
+            display: none;
+            background-color: rgb(0, 0, 0);
+            overflow: hidden;
+            position: absolute;
+            top: 60px;
+            right: 0;
+            width: 100%;
+            z-index: 1;
+            animation: fade-in 0.5s ease-in-out;
+        }
+
+        nav a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            border: 1px solid white;
+        }
+
+        @media only screen and (max-width: 600px) {
+            nav {
+                top: 60px;
+            }
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .product-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 50px auto;
+        }
+
+        .product {
+            background-color: #ffffff;
+            color: #000000;
+            border: 1px solid #000000;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px;
+            width: 250px;
+            text-align: center;
+        }
+
+        .product img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .product h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .product p {
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .buy-button {
+            background-color: #000000;
+            color: #ffffff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .buy-button:hover {
+            background-color: #ffffff;
+            border: 2px solid #000000;
+            color: black;
+        }
+
+        .view-more {
+            text-align: center;
+            color: white;
+        }
+
+        .view-more {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 18px;
+            text-align: center;
+            text-decoration: none;
+            color: #fff;
+            background-color: #000000;
+            border: 2px solid #ffffff;
+            cursor: pointer;
+            transition: background-color 0.5s ease;
+        }
+
+        .view-more:hover {
+            background-color: #ffffff;
+            /* Change to the desired color on hover */
+            color: #000000;
+            border-color: #000000;
+        }
+
+        .content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #000000;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+            color: #fff;
+        }
+
+        #faq-container {
+            max-width: 600px;
+            background-color: #000000;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #faq-container div {
+            text-align: center;
+        }
+
+        .faq-item {
+            margin: 5px auto;
+            margin-bottom: 20px;
+        }
+
+        .question {
+            margin: 10px auto;
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 25px;
+        }
+
+        .answer {
+            margin: 30px auto;
+            color: #ffffff;
+            font-style: italic;
+        }
+
+        .faq {
+            color: white;
+            font-size: 30px;
+        }
+
+        .footer {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1 class="logo">FK</h1>
+        <div id="menuButton">&#9776;</div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="store">Store</a>
+            <a href="affiliate">Affiliate</a>
+            <a href="delivery">Delivery</a>
+            <a href="reviews">Reviews</a>
+            <a href="contact">Contact</a>
+        </nav>
+    </header>
+
+    <div class="quote">
+        <div>
+            <h2>"Elevate Your Record-Keeping Game with FK Receipt."</h2>
+        </div>
+        <div>
+            <p><i>- Albert Einstein</i></p>
+        </div>
+    </div>
+
+    <div class="snake">
+        <img src="https://i.postimg.cc/8cPYJQQh/FK-RECEIPT.gif">
+    </div>
+
+    <div>
+        <div class="bestsellers">
+            <h2>Our Bestsellers</h2>
+        </div>
+        <div class="product-container">
+            {% for i in products %}
+            <form action="#" method="post">
+                <div class="product">
+                    <img src="{{i['thumbnailUrl']}}" alt="{{i['itemName']}}">
+                    <h2>{{i['itemName']}}</h2>
+                    <a class="buy-button" href="items/{{i['id']}}">Buy
+                        Now</a>
+                </div>
+            </form>
+            {% endfor %}
+            <div>
+                <a href="store" class="view-more">View more</a>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <h1>How We Work?</h1>
+        <p><i>We provide 1:1 receipts for your sneakers, clothes, etc. We offer both physical (printout) aswell as
+                digital receipts. Most receipts are automated and are being sent in 5 minutes.</i></p>
+    </div>
+    <div id="faq-container">
+        <div class="faq">
+            <h2>FAQ</h2>
+        </div>
+        <div class="faq-item">
+            <div class="question">How will I get my receipt?</div>
+            <div class="answer">If you bought a email or paper receipt, you will get it via email.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="question">What's the delivery time?</div>
+            <div class="answer">From 5 minutes to 48 hours</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="question">What to do if you haven't received a receipt?</div>
+            <div class="answer">Just message us on telegram or instagram</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="question">What to do if you received a receipt with incorrect info?</div>
+            <div class="answer">Message us on telegram or instagram, we will fix.</div>
+        </div>
+        <div>
+            <a href="contact" class="view-more">Contact us!</a>
+        </div>
+    </div>
+    <div class="footer">
+        © FK Receipt, 2023.
+    </div>
+    <script>
+        document.getElementById('menuButton').addEventListener('click', function () {
+            var nav = document.querySelector('nav');
+            nav.style.display = (nav.style.display === 'block') ? 'none' : 'block';
+        });
+    </script>
+
+</body>
+
+</html>

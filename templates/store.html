@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css">
+    <title>FK Receipts | Store</title>
+</head>
+<body>
+    <header>
+        <head>
+            <link rel="stylesheet" href="./Components/index.css">        
+        </head>
+    </header>
+    <div class="StoreWrapper">
+        <div class="StoreHeader">
+            <h2>All of our products</h2>
+        </div>
+        <div class="Items">
+            <div class="groups">
+                <form action="#" method="post">
+                    {% for i in groups %}
+                    <button class="button" name="buttons" value="{{i}}">
+                        <b>{{i}} invoices</b>
+                    </button>
+                    {% endfor %}
+                </form>
+            </div>
+            <div class="ProductsWrapper">
+                <div class="ProductContainer">
+                    <!-- {% for i in products %} -->
+                    <form action="#" method="post">
+                        <div class="Product">
+                            <!-- <img src="{{i[`thumbnailUrl`]}}" alt="{{i[`itemName`]}}"> -->
+                            <img src="./fk-receipts//apple.png" alt="">
+                        </div>
+                    </form>
+                    <!-- {% endfor %} -->
+                </div>
+                <div class="ProductContainer">
+                    <!-- {% for i in products %} -->
+                    <form action="#" method="post">
+                        <div class="Product">
+                            <!-- <img src="{{i[`thumbnailUrl`]}}" alt="{{i[`itemName`]}}"> -->
+                            <img src="./fk-receipts//apple.png" alt="">
+                        </div>
+                    </form>
+                    <!-- {% endfor %} -->
+                </div>
+                <div class="ProductContainer">
+                    <!-- {% for i in products %} -->
+                    <form action="#" method="post">
+                        <div class="Product">
+                            <!-- <img src="{{i[`thumbnailUrl`]}}" alt="{{i[`itemName`]}}"> -->
+                            <img src="./fk-receipts//apple.png" alt="">
+                        </div>
+                    </form>
+                    <!-- {% endfor %} -->
+                </div>
+                <div class="ProductContainer">
+                    <!-- {% for i in products %} -->
+                    <form action="#" method="post">
+                        <div class="Product">
+                            <!-- <img src="{{i[`thumbnailUrl`]}}" alt="{{i[`itemName`]}}"> -->
+                            <img src="./fk-receipts//apple.png" alt="">
+                        </div>
+                    </form>
+                    <!-- {% endfor %} -->
+                </div>
+                <div class="ProductContainer">
+                    <!-- {% for i in products %} -->
+                    <form action="#" method="post">
+                        <div class="Product">
+                            <!-- <img src="{{i[`thumbnailUrl`]}}" alt="{{i[`itemName`]}}"> -->
+                            <img src="./fk-receipts//apple.png" alt="">
+                        </div>
+                    </form>
+                    <!-- {% endfor %} -->
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

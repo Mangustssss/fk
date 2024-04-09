@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: black;
+        }
+
+        div {
+            background-color: black;
+        }
+
+        header {
+            background-color: black;
+            padding: 10px;
+            text-align: center;
+            position: relative;
+        }
+
+        #menuButton {
+            cursor: pointer;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: white;
+            font-size: 20px;
+        }
+
+        .logo {
+            color: white;
+        }
+
+
+
+        .all-products {
+            color: white;
+            text-align: center;
+            font-size: 30px;
+        }
+
+
+        nav {
+            display: none;
+            background-color: rgb(0, 0, 0);
+            overflow: hidden;
+            position: absolute;
+            top: 60px;
+            right: 0;
+            width: 100%;
+            z-index: 1;
+            animation: fade-in 0.5s ease-in-out;
+        }
+
+        nav a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            border: 1px solid white;
+        }
+
+        @media only screen and (max-width: 600px) {
+            nav {
+                top: 60px;
+            }
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .product-container {
+            max-width: 600px;
+            margin: 100px auto 0 auto;
+            padding: 20px;
+            border: 1px solid #ffffff;
+            box-shadow: 0 0 60px rgba(255, 255, 255, 1);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .product-image {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .product-name {
+            font-size: 40px;
+            margin: 10px 0;
+            color: white;
+        }
+
+        .product-description {
+            font-size: 17px;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+
+        .product-container h2 {
+            color: #ffffff;
+            /* Черный цвет заголовка */
+
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #ffffff;
+            color: #000000;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            color: #fff;
+            background-color: #000;
+            border: 1px solid #ffffff;
+        }
+
+        .question {
+            margin: 5px auto;
+            color: #fff;
+            font-size: 15px;
+        }
+
+        .footer {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 40%;
+        }
+
+
+        a {
+            cursor: pointer;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        .section {
+            position: relative;
+            width: 100%;
+            display: block;
+
+        }
+
+        .full-height {
+            min-height: 100vh;
+        }
+
+        .over-hide {
+            overflow: hidden;
+        }
+
+        .padding-tb {
+            padding: 100px 0;
+        }
+
+        
+
+        .product-price {
+            color: white;
+            font-size: 30px;
+        }
+
+        #iframeContainer {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+        }
+
+        iframe {
+            border-radius: 10%;
+            box-shadow: 0 0 50px rgba(255, 255, 255, 0.7);
+        }
+        #question-form {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            max-width: 300px;
+            /* Set max width for better readability */
+        }
+
+        #back {
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #000;
+            text-decoration: none;
+            border-radius: 5px;
+            background-color: white;
+            color: black;
+        }
+        #back:hover {
+            background-color: black;
+            color: white;
+            border: 1px solid white;
+        }
+
+
+        #promo-input {
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #000;
+            /* Set input border color to black */
+            border-radius: 5px;
+            /* Add border radius for rounded corners */
+        }
+
+
+        #submit-button {
+            background-color: #ffffff;
+            /* Set button background color to black */
+            color: #000000;
+            /* Set button text color to white */
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .payment-frame {
+            text-align: center;
+            border-radius: 25px;
+            width: 100%;
+            height: 100%;
+        }
+
+        .question {
+            display: inline-block;
+            width: 80%;
+            margin-top: 45px;
+        }
+
+        .question label {
+            font-size: 30px;
+            color: #fff;
+        }
+
+
+        .rocket {
+            width:100px;
+        }
+        .slogan {
+            color: white;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1 class="logo">FK</h1>
+        <div id="menuButton">&#9776;</div>
+        <nav>
+            <a href="../">Home</a>
+            <a href="../store">Store</a>
+            <a href="../affiliate">Affiliate</a>
+            <a href="../delivery">Delivery</a>
+            <a href="../reviews">Reviews</a>
+            <a href="../contact">Contact</a>
+        </nav>
+    </header>
+    <div>
+        <div class="product-container" id="container">
+            <div class="question" id="question">
+                <div id="containerInstaLabel">
+                    <label>Thank you for the purchase and dont forget that <b>WE DELIVER</b> reps as well!</label>
+                </div>
+                <img class='rocket' src="https://i.postimg.cc/m2H6DyM1/rocket.gif"/>
+                <h1 class="slogan">High Speed. High Quality. Low Prices</h1>
+                <div id="containerInstaInput">
+                    <a id="back" href="https://t.me/fkdeliveryy"><b>Order some REPS</b></a>
+    
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        © FK Receipt, 2023.
+    </div>
+    <script>
+        document.getElementById('menuButton').addEventListener('click', function () {
+            var nav = document.querySelector('nav');
+            nav.style.display = (nav.style.display === 'block') ? 'none' : 'block';
+        });
+    </script>
+
+</body>
+
+</html>
