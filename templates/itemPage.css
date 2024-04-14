@@ -1,155 +1,174 @@
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 
-    font-family: 'Poppins';
+  font-family: "Poppins";
 }
-
 
 .ItemWrapper {
-    width: 100%;
-    height: 100vh;
+  width: 100%;
+  height: 100vh;
 
-    background-color: black;
+  background-color: black;
 
-    display: flex;
-    justify-content: center;
-    color: white;
+  display: flex;
+  justify-content: center;
+  color: white;
 }
 
-
 .itemImg {
-    display: flex;
-    width: 100%;
-    height: 40%;
+  display: flex;
+  width: 100%;
+  height: 40%;
+  justify-content: center;
 }
 
 .itemImg img {
-    width: 60%;
-    object-fit: contain;
-    margin-top: 5vh;
+  max-width: 50%;
+  object-fit: contain;
+  margin-top: 5vh;
 }
 
 .itemInfo {
-    width: 100%;
-    height: 50%;
-    float: left;
-    display: flex;
-    flex-direction: column;
-    margin-top: 5vh;
-    margin-left: 9vh;
-}
-
-.itemInfo p{
-    width: 70%;
+  width: 100%;
+  height: 50%;
+  float: left;
+  display: flex;
+  flex-direction: column;
+  margin-top: 5vh;
+  align-items: center;
 }
 
 /* Form */
 
 .itemForm {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 
-    margin-top: 4vh;
-    width: 80%;
-    height: 90vh;
+  margin-top: 4vh;
+  width: 80%;
+  height: 90vh;
 
-    border: 1px solid white;
+  flex-wrap: wrap;
+
+  border: 1px solid white;
 }
 
-
 .itemInfoLeft {
-    display: flex;
-    flex-direction: column;
-    width: 49%;
+  display: flex;
+  flex-direction: column;
+  width: 49%;
+  text-align: center;
+  align-self: center;
 }
 
 .itemFormInput {
-    display: flex;
-    flex-direction: column;
-    width: 49%;
+  display: flex;
+  flex-direction: column;
+  width: 49%;
 }
 
 form {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-    justify-content: center;
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  text-align: center;
 }
 
 form input {
-    width: 678px;
-    padding: 1vh;
-    margin: 1vh;
+  padding: 1vh 0;
+  margin: 1vh 0;
 }
-
 
 form select {
-    width: 700px;
-    padding: 0.4% 1vh;
-    margin: 1vh;
+  padding: 1vh 0;
+  margin: 1vh 0;
 }
 
-
 form button {
-    width: 15vh;
-    height: 5vh;
+  width: 15vh;
+  height: 5vh;
 
-    font-size: 2vh;
-    font-weight: 600;
+  margin-top: 30px;
 
-    background-color: white;
-    border-radius: 15px;
-    
-    transition: 250ms ease-in-out;
-    cursor: pointer;
+  font-size: 2vh;
+  font-weight: 600;
+
+  background-color: white;
+  border-radius: 15px;
+
+  transition: 250ms ease-in-out;
+  cursor: pointer;
 }
 
 form button:hover {
-    opacity: 0.7;
+  opacity: 0.7;
 }
 
+/* Footer */
 
-
- /* Footer */
-
- footer {
-    width: 100%;
-    height: 15vh;
-    background-color: black;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    flex-direction: column;
-  }
-
+footer {
+  width: 100%;
+  height: 15vh;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex-direction: column;
+}
 
 .socials {
-    display: flex;
-    width: 100%;
-    justify-content: center; 
+  display: flex;
+  width: 100%;
+  justify-content: center;
 }
 
 .socials a {
-    padding: 1vh;
-    transition: 250ms ease-in-out;
-    width: 8vh;
+  padding: 1vh;
+  transition: 250ms ease-in-out;
+  width: 8vh;
 }
 
 .socials a:hover {
-    opacity: 0.7;
+  opacity: 0.7;
 }
 
 #social {
-    width: 75px;
+  width: 75px;
 }
 
 footer h4 {
-    width: auto;
-    padding: 1vh;
-    font-size: 1.3vh;
-    font-weight: 500;
+  width: auto;
+  padding: 1vh;
+  font-size: 1.3vh;
+  font-weight: 500;
+}
+
+@media only screen and (max-width: 800px) {
+  form button {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .itemInfoLeft {
+    width: 100%;
+  }
+  .itemFormInput {
+    margin-top: 50px;
+    width: 100%;
+  }
+  .ItemWrapper {
+    height: auto;
+  }
+  .itemForm {
+    height: auto;
+    padding: 0 25px;
+  }
+  form button {
+    margin: 10px 0;
+  }
 }
