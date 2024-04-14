@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./index.css">
+    <script>
+        function openBurger() {
+            var menu = document.getElementById("menu");
+    
+            menu.classList.toggle("open");
+          }
+    </script>
     <title>FK Receipts | Affiliate</title>
 </head>
 <body>
@@ -12,15 +19,17 @@
             <link rel="stylesheet" href="./Components/index.css">        
         </head>
         <div class="header">
-            <img src="./fk-receipts/logo.png" alt="">
-            <ul>
-                <li><a href="./home.html">Home</a></li>
-                <li><a style="text-decoration: underline;" href="./affiliate.html">Affiliate</a></li>
-                <li><a href="./delivery.html">Delivery</a></li>
-                <li><a href="./reviews.html">Reviews</a></li>
-                <li><a href="./about.html">About Us</a></li>
-            </ul>
-        </div>
+            <div class="imageHeaderContainer">
+              <img src="./fk-receipts/logo.png" alt="" />
+            </div>
+            <div id="menuButton" onclick="openBurger()">&#9776;</div>
+            <nav id="menu">
+              <a href="#">Home</a>
+              <a href="store">Store</a>
+              <a href="affiliate">Affiliate</a>
+              <a href="contact">Contact</a>
+            </nav>
+          </div>
     </header>
     <div class="AffiliateWrapper">
         <div class="affiliateText">
