@@ -1,38 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./index.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./index.css" />
     <title>FK Receipts | Reviews</title>
-</head>
-<body>
+    <script>
+      function openBurger() {
+        var menu = document.getElementById("menu");
+
+        menu.classList.toggle("open");
+      }
+    </script>
+  </head>
+  <body>
     <header>
-        <head>
-            <link rel="stylesheet" href="./Components/index.css">        
-        </head>
-        <div class="header">
-            <img src="./fk-receipts/logo.png" alt="">
-            <ul>
-                <li><a href="./home.html">Home</a></li>
-                <li><a href="./affiliate.html">Affiliate</a></li>
-                <li><a href="./delivery.html">Delivery</a></li>
-                <li><a style="text-decoration: underline;" href="./reviews.html">Reviews</a></li>
-                <li><a href="./about.html">About Us</a></li>
-            </ul>
+      <head>
+        <link rel="stylesheet" href="./Components/index.css" />
+      </head>
+      <div class="header">
+        <div class="imageHeaderContainer">
+          <img src="./fk-receipts/logo.png" alt="" />
         </div>
+        <div id="menuButton" onclick="openBurger()">&#9776;</div>
+        <nav id="menu">
+          <a href="#">Home</a>
+          <a href="store">Store</a>
+          <a href="affiliate">Affiliate</a>
+          <a href="contact">Contact</a>
+        </nav>
+      </div>
     </header>
-    <div class="ReviewsWrapper">
-
-    </div>
+    <div class="ReviewsWrapper"></div>
     <footer>
-        <div class="socials">
-            <a target="_blank" href="https://www.instagram.com/fkreceipts/"><img id="social" src="./fk-receipts/insta icon.png" alt="ig"></a>
-            <a target="_blank" href="https://t.me/fkreceipts/363"><img id="social" src="./fk-receipts/telegram icon.png" alt=""></a>
-            <a target="_blank" href="https://www.youtube.com/channel/UCC2VbTPx77AKw9s7BsZEDlw"><img id="social" src="./fk-receipts/youtobe icon.png" alt=""></a>
-        </div>
-        <h4>Copyright © 2024; Designed By FKRECEIPT</h4>
-
+      <div class="socials">
+        <a target="_blank" href="https://www.instagram.com/fkreceipts/"
+          ><img id="social" src="./fk-receipts/insta icon.png" alt="ig"
+        /></a>
+        <a target="_blank" href="https://t.me/fkreceipts/363"
+          ><img id="social" src="./fk-receipts/telegram icon.png" alt=""
+        /></a>
+        <a
+          target="_blank"
+          href="https://www.youtube.com/channel/UCC2VbTPx77AKw9s7BsZEDlw"
+          ><img id="social" src="./fk-receipts/youtobe icon.png" alt=""
+        /></a>
+      </div>
+      <h4>Copyright © 2024; Designed By FKRECEIPT</h4>
     </footer>
-</body>
+  </body>
 </html>

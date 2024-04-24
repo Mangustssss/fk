@@ -1,136 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FK Receipts | Order</title>
-    <link rel="stylesheet" href="itemPage.css">
+    <link rel="stylesheet" href="itemPage.css" />
     <script>
-        const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-        const itemid = "{{item['id']}}";
-        const sellixid = "{{item['sellix_id']}}";
-        console.log("SELLIX_ID");
-        console.log(sellixid);
-        function isFormDataNotEmpty(formData) {
-            for (let value of formData.values()) {
-                const trimmedValue = String(value).trim();
+      const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+      const itemid = "{{item['id']}}";
+      const sellixid = "{{item['sellix_id']}}";
+      console.log("SELLIX_ID");
+      console.log(sellixid);
+      function openBurger() {
+        var menu = document.getElementById("menu");
 
-                if (!trimmedValue) {
-                    return false;
-                }
+        menu.classList.toggle("open");
+      }
+      function isFormDataNotEmpty(formData) {
+        for (let value of formData.values()) {
+          const trimmedValue = String(value).trim();
 
+          if (!trimmedValue) {
+            return false;
+          }
+        }
+        return true;
+      }
+      function sendForm() {
+        var formData = new FormData(document.getElementById("orderInfo"));
+        if (isFormDataNotEmpty(formData)) {
+          var custom = "";
+          var custom_list = [];
+          var sellix_button = document.createElement("button");
+          formData.forEach((value, key) => {
+            sellix_button.setAttribute(`data-sellix-custom-${key}`, value);
+            if (key == "email") {
+              sellix_button.setAttribute("data-sellix-email", value);
             }
-            return true;
+          });
+          sellix_button.setAttribute("data-sellix-product", sellixid);
+          sellix_button.setAttribute("type", "submit");
+          sellix_button.setAttribute("id", "invisibleButton");
+          var cont_div = document.getElementById("container");
+          cont_div.appendChild(sellix_button);
+          StartEmbed();
+        } else {
+          alert("Please fill in all input fields");
         }
-        function sendForm() {
-            var formData = new FormData(document.getElementById('orderInfo'));
-            if (isFormDataNotEmpty(formData)) {
-                var custom = "";
-                var custom_list =  [];
-                var sellix_button = document.createElement('button');
-                formData.forEach((value, key) => {
-                    sellix_button.setAttribute(`data-sellix-custom-${key}`,value);
-                    if (key == "email"){
-                        sellix_button.setAttribute('data-sellix-email', value);
-                    }
-                })
-                sellix_button.setAttribute('data-sellix-product', sellixid);
-                sellix_button.setAttribute('type', 'submit');
-                sellix_button.setAttribute('id', 'invisibleButton');
-                var cont_div = document.getElementById("container");
-                cont_div.appendChild(sellix_button);
-                StartEmbed();
-            } else {
-                alert("Please fill in all input fields");
-            }
-        }
+      }
 
-        function StartEmbed() {
-            console.log('EMBED STARTED');
-            var button = document.getElementById("invisibleButton");
-            button.click();
-        }
-
+      function StartEmbed() {
+        console.log("EMBED STARTED");
+        var button = document.getElementById("invisibleButton");
+        button.click();
+      }
     </script>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <head>
-            <link rel="stylesheet" href="./Components/index.css">        
-        </head>
-        <div class="header">
-            <img src="./fk-receipts/logo.png" alt="">
-            <ul>
-                <li><a href="./home.html">Home</a></li>
-                <li><a href="./affiliate.html">Affiliate</a></li>
-                <li><a  href="./delivery.html">Delivery</a></li>
-                <li><a href="./reviews.html">Reviews</a></li>
-                <li><a href="./about.html">About Us</a></li>
-            </ul>
+      <head>
+        <link rel="stylesheet" href="./Components/index.css" />
+      </head>
+      <div class="header">
+        <div class="imageHeaderContainer">
+          <img src="./fk-receipts/logo.png" alt="" />
         </div>
+        <div id="menuButton" onclick="openBurger()">&#9776;</div>
+        <nav id="menu">
+          <a href="#">Home</a>
+          <a href="store">Store</a>
+          <a href="affiliate">Affiliate</a>
+          <a href="contact">Contact</a>
+        </nav>
+      </div>
     </header>
     <div class="ItemWrapper">
-        <div class="itemForm">
-            <div class="itemInfoLeft">
-                <div class="itemImg">
-                    <img src="./fk-receipts/apple.png" alt="">
-                </div>
-                <div class="itemInfo">
-                    <h2>{{item['itemName']}}</h2>
-                    <p>{{item['description']}}</p>
-                    <p>{{item['price']}}$</p>
-                </div>
-            </div>
-            <div class="itemFormInput">
-                <form action="post">
-                    <h2>Fill out the form to order</h2>
-                    {for % in item['requiredInfo'] %}
-                    <input placeholder="Write US size" type="text">
-                    <input placeholder="Write the price of the product" type="text">
-                    <input placeholder="Write the shipping price" type="text">
-                    {% elif i[0] == 'cur' %}
-                    <select id="question" name="{{i[0]}}">
-                        <option value="" disabled selected hidden>Choose currency</option>
-                        <option value="USD">USD</option>
-                        <option value="EUR">EUR</option>
-                        <option value="AUD">AUD</option>
-                        <option value="PLN">PLN</option>
-                        <option value="GBP">GBP</option>
-                        <option value="CAD">CAD</option>
-                        <option value="NOK">NOK</option>
-                        <option value="SEK">SEK</option>
-                        <option value="DKK">DKK</option>
-                        <option value="CZK">CZK</option>
-                    </select>
-                    {% elif i[0] == 'date' %}
-                    <input type="date" name="{{i[0]}}" placeholder="{{i[0]}}">
-                    <input type="text" id="question" name="{{i[0]}}"
-                        placeholder="{{i[1]}}" required>
-                    {% endif %}
-                    {% endfor %}
-                    <button type='button'
-                        onclick="sendForm()">Order</button>
-                    
-                    <!-- <input placeholder="Write the name of the product" type="text">
+      <div class="itemForm">
+        <div class="itemInfoLeft">
+          <div class="itemImg">
+            <img src="./fk-receipts/apple.png" alt="" />
+          </div>
+          <div class="itemInfo">
+            <h2>{{item['itemName']}}</h2>
+            <p>{{item['description']}}</p>
+            <p>{{item['price']}}$</p>
+          </div>
+        </div>
+        <div class="itemFormInput">
+          <form action="post">
+            <h2>Fill out the form to order</h2>
+            {for % in item['requiredInfo'] %}
+            <input placeholder="Write US size" type="text" />
+            <input placeholder="Write the price of the product" type="text" />
+            <input placeholder="Write the shipping price" type="text" />
+            {% elif i[0] == 'cur' %}
+            <select id="question" name="{{i[0]}}">
+              <option value="" disabled selected hidden>Choose currency</option>
+              <option value="USD">USD</option>
+              <option value="EUR">EUR</option>
+              <option value="AUD">AUD</option>
+              <option value="PLN">PLN</option>
+              <option value="GBP">GBP</option>
+              <option value="CAD">CAD</option>
+              <option value="NOK">NOK</option>
+              <option value="SEK">SEK</option>
+              <option value="DKK">DKK</option>
+              <option value="CZK">CZK</option>
+            </select>
+            {% elif i[0] == 'date' %}
+            <input type="date" name="{{i[0]}}" placeholder="{{i[0]}}" />
+            <input
+              type="text"
+              id="question"
+              name="{{i[0]}}"
+              placeholder="{{i[1]}}"
+              required
+            />
+            {% endif %} {% endfor %}
+            <button type="button" onclick="sendForm()">Order</button>
+
+            <!-- <input placeholder="Write the name of the product" type="text">
                     <input placeholder="Write tax" type="text">
                     <input placeholder="Write image URL" type="text">
                     <input placeholder="Write style id" type="text">
                     <input placeholder="Write total price" type="text">
                     <input placeholder="Write your email" type="text"> -->
-    
-                </form>
-            </div>
+          </form>
         </div>
-
-
+      </div>
     </div>
     <footer>
-        <div class="socials">
-            <a target="_blank" href="https://www.instagram.com/fkreceipts/"><img id="social" src="./fk-receipts/insta icon.png" alt="ig"></a>
-            <a target="_blank" href="https://t.me/fkreceipts/363"><img id="social" src="./fk-receipts/telegram icon.png" alt=""></a>
-            <a target="_blank" href="https://www.youtube.com/channel/UCC2VbTPx77AKw9s7BsZEDlw"><img id="social" src="./fk-receipts/youtobe icon.png" alt=""></a>
-        </div>
-        <h4>Copyright © 2024; Designed By FKRECEIPT</h4>
+      <div class="socials">
+        <a target="_blank" href="https://www.instagram.com/fkreceipts/"
+          ><img id="social" src="./fk-receipts/insta icon.png" alt="ig"
+        /></a>
+        <a target="_blank" href="https://t.me/fkreceipts/363"
+          ><img id="social" src="./fk-receipts/telegram icon.png" alt=""
+        /></a>
+        <a
+          target="_blank"
+          href="https://www.youtube.com/channel/UCC2VbTPx77AKw9s7BsZEDlw"
+          ><img id="social" src="./fk-receipts/youtobe icon.png" alt=""
+        /></a>
+      </div>
+      <h4>Copyright © 2024; Designed By FKRECEIPT</h4>
     </footer>
-</body>
+  </body>
 </html>
